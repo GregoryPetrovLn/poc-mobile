@@ -1,7 +1,10 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { HomeScreen, LoginScreen } from "./screens";
+import { USER } from "./service/storageItems";
+import { getItemFromLocalStorage } from "./service/utils";
+import { setUser } from "./slices/user/actions";
 import { selectUser } from "./slices/user/userSlice";
 const screens = [
   {
@@ -12,9 +15,16 @@ const screens = [
 ];
 
 const Navigator = () => {
+  const dispatch = useDispatch();
+
   const Stack = createNativeStackNavigator();
   const { user } = useSelector(selectUser);
-
+  useEffect(() => {
+    const user = getItemFromLocalStorage(USER);
+    if (user) {
+      dispatch(setUser(user));
+    }
+  }, [dispatch]);
   return (
     <Stack.Navigator>
       {user ? (
