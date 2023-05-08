@@ -1,5 +1,6 @@
 import { createAction, createAsyncThunk } from "@reduxjs/toolkit";
 import { AUTH_TOKEN, USER } from "../../service/storageItems";
+import { setItemToLocalStorage } from "../../service/utils";
 export const authFunction = createAsyncThunk(
   "user/authenticate",
   async ({ email, password, name, role, onSuccess, isRegister = false }) => {
@@ -43,8 +44,7 @@ export const logoutFunction = createAsyncThunk("user/logout", async () => {
         "Content-Type": "application/json",
       },
     });
-    localStorage.removeItem(AUTH_TOKEN);
-    localStorage.removeItem(USER);
+    clearAsyncStorage();
   } catch (error) {
     console.log(error);
   }
