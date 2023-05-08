@@ -1,5 +1,3 @@
-import { AUTH_TOKEN, USER } from "@/service/localStorageItems";
-import { setItemToLocalStorage } from "@/service/utils";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 export const authFunction = createAsyncThunk(
   "user/authenticate",
@@ -26,9 +24,6 @@ export const authFunction = createAsyncThunk(
 
       const { token, user } = await response.json();
       if (token) {
-        setItemToLocalStorage(AUTH_TOKEN, token);
-        setItemToLocalStorage(USER, user);
-        onSuccess();
         return user;
       }
     } catch (error) {

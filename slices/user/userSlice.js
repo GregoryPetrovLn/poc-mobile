@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { authFunction, logoutFunction } from "./actions";
 
 const initialState = {
   user: null,
