@@ -33,7 +33,6 @@ const LoginScreen = () => {
   });
 
   const onSubmit = (values) => {
-    console.log("=====>", values);
     const onSuccess = () => {
       navigation.navigate("HomeScreen");
     };
