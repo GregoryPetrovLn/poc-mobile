@@ -1,9 +1,13 @@
 # POC React Native App - Full-Stack Developer Task 
+This is a React Native app that demonstrates authentication functionality and basic CRUD (Create, Read, Update, Delete) operations. The app is built using React Native framework, and it utilizes JWT for authentication and Mongo as the database.
 
 ## Technologies Used
 - React Native
 - Tailwind CSS
 - Redux
+- Async Storage
+- Formik and Yup
+- Expo
 
 ## Screenshots
 <div align="left">
