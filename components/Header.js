@@ -25,26 +25,10 @@ const Header = () => {
 
   return (
     <SafeAreaView>
-      <View
-        style={{
-          shadowColor: "#000",
-          shadowOffset: { width: 0, height: 2 },
-          shadowOpacity: 0.3,
-          shadowRadius: 4,
-          elevation: 4,
-          backgroundColor: "white",
-          padding: 10,
-          flexDirection: "row",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
+      <View style={tw`shadow-md p-5 flex-row justify-between items-center`}>
         <TouchableOpacity onPress={() => navigation.navigate("HomeScreen")}>
-          <View style={{ flexDirection: "row", alignItems: "center" }}>
-            {/* <HomeIcon style={{ width: 24, height: 24, marginRight: 8 }} /> */}
-            <Text style={{ fontSize: 18, fontWeight: "bold" }}>
-              Online Market
-            </Text>
+          <View style={tw`flex flex-row items-center`}>
+            <Text style={tw`font-bold text-lg`}>Online Market</Text>
           </View>
         </TouchableOpacity>
         <View>
@@ -52,7 +36,7 @@ const Header = () => {
             style={tw`bg-gray-200 p-2 rounded-md`}
             onPress={handleAuth}
           >
-            <Text style={{ fontSize: 16, fontWeight: "bold" }}>
+            <Text style={tw`font-bold`}>
               {loading ? "Loading..." : user ? `Hello ${user.name}` : "Login"}
             </Text>
           </TouchableOpacity>

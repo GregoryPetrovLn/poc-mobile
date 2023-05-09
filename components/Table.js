@@ -1,10 +1,25 @@
-import React from "react";
-import { Text, TouchableOpacity, View } from "react-native";
+import React, { useState } from "react";
+import { Text, TextInput, TouchableOpacity, View } from "react-native";
 import tw from "tailwind-react-native-classnames";
 
 const Table = ({ data, onRowPress }) => {
+  const [searchText, setSearchText] = useState("");
+
+  // Filter the data based on the search text
+  const filteredData = data?.filter((item) =>
+    item.name.toLowerCase().includes(searchText.toLowerCase())
+  );
+
   return (
     <View style={tw`border border-gray-400`}>
+      {/* Search Input */}
+      <TextInput
+        style={tw`p-2 border-b border-gray-400`}
+        placeholder="Search..."
+        value={searchText}
+        onChangeText={setSearchText}
+      />
+
       {/* Table Header */}
       <View style={tw`flex-row bg-gray-200`}>
         <View style={tw`flex-1 p-2 border-b border-gray-400`}>
@@ -19,10 +34,10 @@ const Table = ({ data, onRowPress }) => {
       </View>
 
       {/* Table Body */}
-      {data?.map((item, index) => (
+      {filteredData?.map((item, index) => (
         <TouchableOpacity
+          key={item?._id}
           onPress={() => {
-            console.log("HERE");
             onRowPress(item);
           }}
         >

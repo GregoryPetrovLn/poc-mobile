@@ -1,6 +1,6 @@
 import { createAction, createAsyncThunk } from "@reduxjs/toolkit";
 import { AUTH_TOKEN, USER } from "../../service/storageItems";
-import { setItemToLocalStorage } from "../../service/utils";
+import { clearAsyncStorage, setItemToLocalStorage } from "../../service/utils";
 export const authFunction = createAsyncThunk(
   "user/authenticate",
   async ({ email, password, name, role, onSuccess, isRegister = false }) => {

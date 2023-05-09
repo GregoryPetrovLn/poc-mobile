@@ -28,3 +28,5 @@ export const getProductById = createAsyncThunk(
 export const setSelectedProductId = createAction(
   "product/setSelectedProductId"
 );
+
+export const setFavorites = createAction("product/setFavorites");

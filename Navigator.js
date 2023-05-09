@@ -4,8 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import Header from "./components/Header";
 import { HomeScreen, LoginScreen } from "./screens";
 import ProductScreen from "./screens/ProductScreen";
-import { USER } from "./service/storageItems";
+import { FAVORITES_LIST, USER } from "./service/storageItems";
 import { getItemFromLocalStorage, renderScreens } from "./service/utils";
+import { setFavorites } from "./slices/products/actions";
 import { setUser } from "./slices/user/actions";
 import { selectUser } from "./slices/user/userSlice";
 const screens = [
@@ -27,7 +28,7 @@ const Navigator = () => {
   const Stack = createNativeStackNavigator();
   const { user } = useSelector(selectUser);
 
-  const getData = async () => {
+  const getUserData = async () => {
     const data = await getItemFromLocalStorage(USER);
     if (data) {
       dispatch(setUser(data));
@@ -35,8 +36,16 @@ const Navigator = () => {
     return data;
   };
 
+  const getFavoritesData = async () => {
+    const data = await getItemFromLocalStorage(FAVORITES_LIST);
+    if (data) {
+      dispatch(setFavorites(data));
+    }
+  };
+
   useEffect(() => {
-    getData();
+    getUserData();
+    getFavoritesData();
   }, []);
   return (
     <>

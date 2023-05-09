@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import {
   getListProducts,
   getProductById,
+  setFavorites,
   setSelectedProductId,
 } from "./actions";
 
@@ -11,6 +12,7 @@ const initialState = {
   selected: null,
   selectedId: null,
   loading: false,
+  favorites: [],
 };
 
 export const productSlice = createSlice({
@@ -36,6 +38,9 @@ export const productSlice = createSlice({
     });
     builder.addCase(setSelectedProductId, (state, { payload }) => {
       state.selectedId = payload;
+    });
+    builder.addCase(setFavorites, (state, { payload }) => {
+      state.favorites = payload;
     });
   },
 });
