@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { SafeAreaView, Text, TouchableOpacity, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,11 +9,10 @@ import { logoutFunction } from "../slices/user/actions";
 import { selectUser } from "../slices/user/userSlice";
 
 const Header = () => {
-  //const navigation = useNavigation();
+  const navigation = useNavigation();
 
   const dispatch = useDispatch();
   const { user, loading } = useSelector(selectUser);
-  console.log("user", user);
   const handleAuth = () => {
     const token = getItemFromLocalStorage(AUTH_TOKEN);
     if (token) {
@@ -39,7 +39,7 @@ const Header = () => {
           alignItems: "center",
         }}
       >
-        <TouchableOpacity onPress={() => console.log("Navigate to /products")}>
+        <TouchableOpacity onPress={() => navigation.navigate("HomeScreen")}>
           <View style={{ flexDirection: "row", alignItems: "center" }}>
             {/* <HomeIcon style={{ width: 24, height: 24, marginRight: 8 }} /> */}
             <Text style={{ fontSize: 18, fontWeight: "bold" }}>
