@@ -26,7 +26,7 @@ Install project with npm
 
 Add .env file
 ```bash
-  API_BASE_URL=http://localhost:3300/api
+  API_BASE_URL=http://54.172.120.12:3300/api
 ```
 Run project on ios simulator
 ```bash
