@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Header from "./components/Header";
 import { HomeScreen, LoginScreen } from "./screens";
+import ProductScreen from "./screens/ProductScreen";
 import { USER } from "./service/storageItems";
 import { getItemFromLocalStorage, renderScreens } from "./service/utils";
 import { setUser } from "./slices/user/actions";
@@ -11,6 +12,11 @@ const screens = [
   {
     name: "HomeScreen",
     component: HomeScreen,
+    options: { headerShown: false },
+  },
+  {
+    name: "ProductScreen",
+    component: ProductScreen,
     options: { headerShown: false },
   },
 ];
